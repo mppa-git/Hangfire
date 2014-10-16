@@ -98,11 +98,11 @@ namespace Hangfire.Server
                 var jobData = connection.GetJobData(jobId);
                 jobData.EnsureLoaded();
 
-                var cancellationToken = new ServerJobCancellationToken(
+                var jobCallback = new ServerJobCallback(
                     jobId, connection, _context, shutdownToken);
 
                 var performContext = new PerformContext(
-                    _context, connection, jobId, jobData.Job, jobData.CreatedAt, cancellationToken);
+                    _context, connection, jobId, jobData.Job, jobData.CreatedAt, jobCallback);
 
                 var latency = (DateTime.UtcNow - jobData.CreatedAt).TotalMilliseconds;
                 var duration = Stopwatch.StartNew();
