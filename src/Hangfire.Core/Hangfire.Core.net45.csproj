@@ -195,6 +195,8 @@
     <Compile Include="Dashboard\RequestExtensions.cs" />
     <Compile Include="IBootstrapperConfiguration.cs" />
     <Compile Include="Net40CompatibilityHelper.cs" />
+    <Compile Include="IJobCallback.cs" />
+    <Compile Include="JobCallback.cs" />
     <Compile Include="OwinBootstrapper.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="RecurringJob.cs" />
@@ -247,7 +249,7 @@
     <Compile Include="Server\RecurringJobScheduler.cs" />
     <Compile Include="Server\ScheduleInstant.cs" />
     <Compile Include="Server\ScheduleInstantFactory.cs" />
-    <Compile Include="Server\ServerJobCancellationToken.cs" />
+    <Compile Include="Server\ServerJobCallback.cs" />
     <Compile Include="Server\ServerOwinExtensions.cs" />
     <Compile Include="Server\SharedWorkerContext.cs" />
     <Compile Include="StartupConfiguration.cs" />
@@ -259,6 +261,8 @@
     <Compile Include="Common\JobFilterInfo.cs" />
     <Compile Include="States\IStateChangeProcess.cs" />
     <Compile Include="States\IStateMachineFactory.cs" />
+    <Compile Include="States\ProcessingLogState.cs" />
+    <Compile Include="States\ProcessingSubState.cs" />
     <Compile Include="States\StateChangeProcess.cs" />
     <Compile Include="States\StateHandlerCollection.cs" />
     <Compile Include="Server\SchedulePoller.cs" />

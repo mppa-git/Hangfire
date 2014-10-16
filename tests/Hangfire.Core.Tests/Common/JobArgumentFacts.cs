@@ -12,7 +12,7 @@ namespace Hangfire.Core.Tests.Common
 	public class JobArgumentFacts
 	{
 		private readonly Mock<JobActivator> _activator;
-		private readonly Mock<IJobCancellationToken> _token;
+        private readonly Mock<IJobCallback> _jobCallback;
 
 		public JobArgumentFacts()
 		{
@@ -20,8 +20,8 @@ namespace Hangfire.Core.Tests.Common
 			_activator.Setup(x => x.ActivateJob(It.IsAny<Type>()))
 				      .Returns(() => new JobArgumentFacts());
 
-			_token = new Mock<IJobCancellationToken>();
-		}
+            _jobCallback = new Mock<IJobCallback>();
+        }
 
 		private const Boolean BooleanValue = true;
 		public void Method(Boolean value) { Assert.Equal(BooleanValue, value); }
@@ -312,7 +312,7 @@ namespace Hangfire.Core.Tests.Common
 			foreach (var method in serializationMethods)
 			{
 				var job = new Job(type, methodInfo, new[] { method.Item2() });
-				job.Perform(_activator.Object, _token.Object);	
+				job.Perform(_activator.Object, _jobCallback.Object); 
 			}
 		}
 	}
